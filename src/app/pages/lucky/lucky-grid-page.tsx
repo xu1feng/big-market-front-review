@@ -31,7 +31,7 @@ export function LuckyGridPage() {
 
     const [defaultStyle] = useState([{background: "#b8c5f2"}])
 
-    const myLucky = useRef<any>(null)
+    const myLucky = useRef<never>(null)
 
     return <>
         <LuckyGrid
