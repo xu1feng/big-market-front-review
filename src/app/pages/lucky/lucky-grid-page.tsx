@@ -1,7 +1,7 @@
 "use client"
 
 import React, {useState, useRef} from 'react'
-// @ts-expect-error
+// @ts-expect-error 代码是指 ts 忽略这个组件本身报的异常
 import {LuckyGrid} from '@lucky-canvas/react'
 
 /**
@@ -44,16 +44,16 @@ export function LuckyGridPage() {
             defaultStyle={defaultStyle}
             buttons={buttons}
             onStart={() => { // 点击抽奖按钮会触发star回调
-                // @ts-expect-error
+                // @ts-expect-error 代码是指 ts 忽略异常
                 myLucky.current.play()
                 setTimeout(() => {
                     const index = Math.random() * 6 >> 0
-                    // @ts-expect-error
+                    // @ts-expect-error 代码是指 ts 忽略异常
                     myLucky.current.stop(index)
                 }, 2500)
             }}
             onEnd={
-                // @ts-expect-error
+                // @ts-expect-error 代码是指 ts 忽略异常
                 prize => {
                     alert('恭喜你抽到 ' + prize.fonts[0].text + ' 号奖品')
                 }
