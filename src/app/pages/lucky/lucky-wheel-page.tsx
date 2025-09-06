@@ -1,7 +1,7 @@
 "use client"
 
 import React, {useEffect, useRef, useState} from 'react'
-// @ts-ignore
+// @ts-expect-error
 import {LuckyWheel} from '@lucky-canvas/react'
 
 import {queryRaffleAwardList, randomRaffle} from '@/apis'
@@ -77,12 +77,12 @@ export function LuckyWheelPage() {
             prizes={prizes}
             buttons={buttons}
             onStart={() => {
-                // @ts-ignore
+                // @ts-expect-error
                 myLucky.current.play()
                 setTimeout(() => {
                     // 抽奖接口
                     randomRaffleHandle().then(prizeIndex => {
-                            // @ts-ignore
+                        // @ts-expect-error
                             myLucky.current.stop(prizeIndex);
                         }
                     );
@@ -90,7 +90,7 @@ export function LuckyWheelPage() {
                 }, 2500)
             }}
             onEnd={
-                // @ts-ignore
+                // @ts-expect-error
                 prize => {
                     alert('恭喜你抽到【' + prize.fonts[0].text + '】奖品ID【' + prize.fonts[0].id + '】')
                 }

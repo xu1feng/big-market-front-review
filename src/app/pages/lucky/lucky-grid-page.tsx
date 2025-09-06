@@ -1,7 +1,7 @@
 "use client"
 
 import React, {useState, useRef} from 'react'
-// @ts-ignore
+// @ts-expect-error
 import {LuckyGrid} from '@lucky-canvas/react'
 
 /**
@@ -44,16 +44,16 @@ export function LuckyGridPage() {
             defaultStyle={defaultStyle}
             buttons={buttons}
             onStart={() => { // 点击抽奖按钮会触发star回调
-                // @ts-ignore
+                // @ts-expect-error
                 myLucky.current.play()
                 setTimeout(() => {
                     const index = Math.random() * 6 >> 0
-                    // @ts-ignore
+                    // @ts-expect-error
                     myLucky.current.stop(index)
                 }, 2500)
             }}
             onEnd={
-                // @ts-ignore
+                // @ts-expect-error
                 prize => {
                     alert('恭喜你抽到 ' + prize.fonts[0].text + ' 号奖品')
                 }
