@@ -79,12 +79,12 @@ export function LuckyWheelPage() {
             prizes={prizes}
             buttons={buttons}
             onStart={() => {
-                // @ts-expect-error 代码是指 ts 忽略异常
+                // @ts-expect-error 代码是指 ts 忽略该组件本身存在的异常
                 myLucky.current.play()
                 setTimeout(() => {
                     // 抽奖接口
                     randomRaffleHandle().then(prizeIndex => {
-                        // @ts-expect-error 代码是指 ts 忽略异常
+                        // @ts-expect-error 代码是指 ts 忽略该组件本身存在的异常
                             myLucky.current.stop(prizeIndex);
                         }
                     );
@@ -92,7 +92,7 @@ export function LuckyWheelPage() {
                 }, 2500)
             }}
             onEnd={
-                // @ts-expect-error 代码是指 ts 忽略异常
+                // @ts-expect-error 代码是指 ts 忽略该组件本身存在的异常
                 prize => {
                     alert('恭喜你抽到【' + prize.fonts[0].text + '】奖品ID【' + prize.fonts[0].id + '】')
                 }
