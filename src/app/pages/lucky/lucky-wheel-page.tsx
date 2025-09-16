@@ -7,7 +7,8 @@ import {LuckyWheel} from '@lucky-canvas/react'
 import {queryRaffleAwardList, draw} from '@/apis'
 import {RaffleAwardVO} from "@/types/RaffleAwardVO";
 
-export function LuckyWheelPage() {
+// @ts-expect-error 代码是指 ts 忽略该组件本身存在的异常
+export function LuckyWheelPage({handleRefresh}) {
     const [prizes, setPrizes] = useState([{}])
     const myLucky = useRef<never>(null)
 
@@ -84,8 +85,15 @@ export function LuckyWheelPage() {
                 setTimeout(() => {
                     // 抽奖接口
                     randomRaffleHandle().then(prizeIndex => {
-                        // @ts-expect-error 代码是指 ts 忽略该组件本身存在的异常
+                            // @ts-expect-error 代码是指 ts 忽略该组件本身存在的异常
                             myLucky.current.stop(prizeIndex);
+
+                            const timer = setTimeout(() => {
+                                handleRefresh()
+                            }, 550);
+
+                            // 清除定时器，以防组件在执行前被卸载
+                            return () => clearTimeout(timer);
                         }
                     );
 
